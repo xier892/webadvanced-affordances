@@ -1,0 +1,7 @@
+.undercap {
+  --color-primary: #6d5d2e;
+  --color-secondary: #fff;
+  display: flex;
+  justify-content: center;
+  margin: 10% 6.4% 0 6.4%;
+}

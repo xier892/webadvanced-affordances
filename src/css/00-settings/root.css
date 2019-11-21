@@ -1,0 +1,12 @@
+:root {
+  --background-color: #ffbf00;
+  --max-width: 500px;
+  --max-height: 1000px;
+  --bottle-padding: 2vw;
+}
+
+@media screen and (min-width: 500px) {
+  :root {
+    --bottle-padding: 8px;
+  }
+}

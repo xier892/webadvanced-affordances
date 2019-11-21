@@ -36,5 +36,8 @@
     "postcss": "^7.0.17",
     "postcss-css-variables": "^0.13.0",
     "uglify-es": "^3.3.9"
+  },
+  "dependencies": {
+    "npm": "^6.13.1"
   }
 }

@@ -1,0 +1,35 @@
+.cap {
+  --background-color: #fff;
+  --cap-height: 20vh;
+  --indent-color: #eee;
+  --indent-width: 5px;
+  --indent-height: calc(var(--cap-height) - 15px);
+  --shadow-color: #dba400;
+  --shadow-height: 6px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  background-color: var(--background-color);
+  height: var(--cap-height);
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.cap::after {
+  content: '';
+  width: 100%;
+  background-color: var(--shadow-color);
+  height: var(--shadow-height);
+  position: absolute;
+  bottom: 0;
+}
+.cap:hover {
+  transform: scaleY(1.4);
+}
+.cap-indent {
+  background-color: var(--indent-color);
+  width: var(--indent-width);
+  height: var(--indent-height);
+}

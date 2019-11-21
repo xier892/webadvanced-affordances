@@ -1,0 +1,7 @@
+.storage {
+  padding: var(--bottle-padding);
+  display: flex;
+  width: 100%;
+  flex-flow: row wrap;
+  justify-content: center;
+}

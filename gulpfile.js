@@ -7,7 +7,7 @@ const composer = require('gulp-uglify/composer');
 
 const uglify = composer(uglifyes, console);
 const postcss = require('gulp-postcss');
-const cssvariables = require('postcss-css-variables');
+// const cssvariables = require('postcss-css-variables');
 const concatCss = require('gulp-concat-css');
 const uglifycss = require('gulp-uglifycss');
 
@@ -29,9 +29,9 @@ gulp.task('css', function() {
     .pipe(concatCss('main.css', {
       rebaseUrls: false
     }))
-    .pipe(postcss([
-      cssvariables()
-    ]))
+    // .pipe(postcss([
+    //   cssvariables()
+    // ]))
     .pipe(uglifycss({
       uglyComments: true
     }))

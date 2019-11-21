@@ -1,0 +1,22 @@
+.undercap button {
+  --font-size: 30px;
+  margin: 0 10px;
+}
+.undercap-close {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+.undercap-take, .undercap-refill {
+  --button-width: calc(100% - 60px);
+  width: var(--button-width);
+  font-size: var(--font-size);
+  font-weight: bold;
+}
+.undercap-take {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+}
+.undercap-refill {
+  background-color: var(--color-primary);
+  color: #fff;
+}
