@@ -1,5 +1,5 @@
 .pill {
-  --pill-size: calc(100vw / 5 - var(--bottle-padding));
+  --pill-size: calc(20vw - var(--bottle-padding));
   --background-color: rgba(255, 255, 255, 0.8);
   --indent-weight: 5px;
   --indent-width: 65%;
@@ -13,25 +13,26 @@
   height: var(--pill-size);
   border-radius: 50%;
   margin: 2px;
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
 .pill::before {
-  content: '';
-  width: calc(var(--indent-width) / 1.06);
-  height: calc(var(--indent-weight) / 1.5);
-  border-bottom-left-radius: calc(var(--indent-weight) / 4);
-  border-bottom-right-radius: calc(var(--indent-weight) / 4);
-  background-color: #fff;
-}
-.pill::after {
   content: '';
   width: var(--indent-width);
   height: var(--indent-weight);
   border-radius: calc(var(--indent-weight) / 2);
   background-color: var(--indent-color);
 }
+.pill::after {
+  content: '';
+  width: calc(var(--indent-width) / 1.06);
+  height: calc(var(--indent-weight) / 1.5);
+  border-top-left-radius: calc(var(--indent-weight) / 4);
+  border-top-right-radius: calc(var(--indent-weight) / 4);
+  background-color: #fff;
+}
 
-@media screen and (min-width: 500px) {
+@media screen and (orientation: landscape) {
   .pill {
-    --pill-size: calc(var(--max-width) / 5 - var(--bottle-padding));
+    --pill-size: calc(20vh - var(--bottle-padding));
   }
 }

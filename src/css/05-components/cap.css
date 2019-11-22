@@ -1,9 +1,9 @@
 .cap {
   --background-color: #fff;
-  --cap-height: 20vh;
+  --cap-height: calc(20vh + env(safe-area-inset-top));
   --indent-color: #eee;
   --indent-width: 5px;
-  --indent-height: calc(var(--cap-height) - 15px);
+  --indent-height: 90%;
   --shadow-color: #dba400;
   --shadow-height: 6px;
   display: flex;
@@ -26,10 +26,16 @@
   bottom: 0;
 }
 .cap:hover {
-  transform: scaleY(1.4);
+  transform: scaleY(1.2);
 }
 .cap-indent {
   background-color: var(--indent-color);
   width: var(--indent-width);
   height: var(--indent-height);
+}
+
+@media screen and (orientation: landscape) {
+  .cap {
+    --cap-height: 20vw;
+  }
 }
