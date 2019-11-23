@@ -15,6 +15,7 @@
   position: absolute;
   z-index: 10;
   cursor: pointer;
+  transform-origin: bottom right;
   transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
 }
 .cap::after {
@@ -26,12 +27,23 @@
   bottom: 0;
 }
 .cap:hover {
-  transform: scaleY(1.2);
+  transform: scaleY(1.2) translateY(12%);
+}
+.cap.pressed {
+  transform: scaleY(1.4) translateY(14%);
+}
+.cap.dragging {
+  --cap-translate: 0;
+  transform: rotate(var(--cap-rotate)) scaleY(1.4) translateY(var(--cap-translate));
+}
+.cap.dragged {
+  transform: rotate(45deg) translateY(-100%);
 }
 .cap-indent {
   background-color: var(--indent-color);
   width: var(--indent-width);
   height: var(--indent-height);
+  pointer-events: none;
 }
 
 @media screen and (orientation: landscape) {
