@@ -7,7 +7,7 @@
   color: #fff;
 }
 .undercap-take, .undercap-refill {
-  --button-width: calc(100% - 60px);
+  --button-width: 100%;
   width: var(--button-width);
   font-size: var(--font-size);
   font-weight: bold;

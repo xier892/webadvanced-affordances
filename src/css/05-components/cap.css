@@ -27,7 +27,7 @@
   bottom: 0;
 }
 .cap:hover {
-  transform: scaleY(1.2) translateY(12%);
+  transform: scaleY(1.1) translateY(5px);
 }
 .cap.pressed {
   transform: scaleY(1.4) translateY(14%);

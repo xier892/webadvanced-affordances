@@ -54,7 +54,7 @@ const cap = {
         deltaX = touches[0].clientX - clientX;
         deltaY = touches[0].clientY - clientY;
         const delta = Math.max((-deltaY) / width, deltaX / width);
-        target.style.setProperty('--cap-rotate', `${(delta > 0) ? Math.max(10, delta * 80) : 0}deg`);
+        target.style.setProperty('--cap-rotate', `${(delta > 0) ? Math.max(0, delta * 80) : 0}deg`);
         target.style.setProperty('--cap-translate', `${(deltaY < 0) ? Math.max(-40, deltaY / 4) : 0}%`);
       }
     }, false);
