@@ -11,6 +11,10 @@ const cap = {
     deltaX: 0,
     deltaY: 0
   },
+
+  replace() {
+    cap.el.classList.remove('dragged');
+  },
   addEvents() {
     const { el, properties } = cap;
     let { width, height } = properties;
@@ -27,10 +31,6 @@ const cap = {
     window.addEventListener('orientationchange', () => {
       width = el.offsetWidth;
       height = el.offsetHeight;
-    });
-
-    el.addEventListener('contextmenu', (event) => {
-      event.preventDefault();
     });
 
     el.addEventListener('touchstart', (event) => {
@@ -66,10 +66,11 @@ const cap = {
       }
       if (target.classList.contains('dragging') && deltaX >= width / 2.5 || -deltaY >= height / 2.5) {
         target.classList.add('dragged');
-        target.classList.remove('pressed');
       }
       target.classList.remove('pressed', 'dragging');
       target.removeAttribute('style');
+      deltaX = 0;
+      deltaY = 0;
     }, false);
 
     el.addEventListener('touchcancel', (event) => {
@@ -80,10 +81,6 @@ const cap = {
       target.classList.remove('pressed', 'dragging');
       target.removeAttribute('style');
     }, false);
-  },
-
-  replace() {
-    cap.el.classList.remove('dragged');
   }
 };
 
