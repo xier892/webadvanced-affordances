@@ -18,6 +18,7 @@ const cap = {
   },
 
   state: {
+    open: false,
     timer: 0,
     clientX: 0,
     clientY: 0,
@@ -25,13 +26,17 @@ const cap = {
     deltaY: 0
   },
 
+  setState(s) {
+    cap.state.open = (s === 'open');
+    populateStorage('capState', s);
+  },
+
   depress() {
-    cap.el.classList.add('pressed');
+    cap.el.className = ('cap pressed');
   },
 
   move() {
-    cap.el.classList.remove('pressed');
-    cap.el.classList.add('dragging');
+    cap.el.className = ('cap dragging');
   },
 
   reset() {
@@ -40,13 +45,19 @@ const cap = {
   },
 
   remove() {
-    cap.el.classList.add('dragged');
-    populateStorage('capState', 'open');
+    const { el, setState } = cap;
+    el.className = ('cap dragged');
+    setState('open');
   },
 
   replace() {
-    cap.el.classList.remove('dragged');
-    removeStorage('capState');
+    const { el, setState } = cap;
+    el.classList.remove('dragged');
+    setState('closed');
+  },
+
+  close() {
+    setTimeout(cap.replace, retrieveStorage('pillCount', prescription.quantity) * 50 + 250);
   },
 
   addEvents() {
@@ -123,15 +134,16 @@ const cap = {
   init() {
     cap.el = cap.data();
 
-    document.getElementById('top').insertBefore(cap.el, document.getElementById('capunder'));
-
     switch (retrieveStorage('capState')) {
       case 'open':
         cap.remove();
         break;
       default:
+        cap.remove();
+        cap.close();
     }
 
+    document.getElementById('top').appendChild(cap.el);
     cap.addEvents();
   },
 };
