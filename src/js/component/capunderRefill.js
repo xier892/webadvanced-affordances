@@ -27,10 +27,12 @@ const buttonRefill = {
 
   addEvents() {
     const { el } = buttonRefill;
+    el.addEventListener('touchend', pillCollection.refill, false);
+  },
 
-    el.addEventListener('touchend', (event) => {
-      pillCollection.refill();
-    }, false);
+  removeEvents() {
+    const { el } = buttonRefill;
+    el.removeEventListener('touchend', pillCollection.refill, false);
   },
 
   init() {

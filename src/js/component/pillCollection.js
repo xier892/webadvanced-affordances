@@ -6,27 +6,26 @@ const pillCollection = {
 
   take(n) {
     const { el, properties: { contents } } = pillCollection;
+    const nn = Math.min(contents.length, n);
 
-    for (let i = 1; i <= n; i++) {
+    for (let i = 1; i <= nn; i++) {
       contents[contents.length - i].withdraw();
     }
 
-    contents.splice(contents.length - n, n);
-    populateStorage('pillCount', Math.max(0, retrieveStorage('pillCount') - n));
+    contents.splice(contents.length - nn, nn);
+    populateStorage('pillCount', Math.max(0, retrieveStorage('pillCount') - nn));
 
     capunder.toggleButton();
   },
 
   fill(n) {
     const { el, properties: { contents } } = pillCollection;
+    const delay = (cap.state.open);
 
     for (let i = 0; i < n; i++) {
       const p = new Pill();
-      p.init();
       contents.push(p);
-      setTimeout(() => {
-        el.appendChild(p.el);
-      }, 50 * i);
+      p.init((delay) ? 50 * i : 0);
     }
 
     populateStorage('pillCount', contents.length);
@@ -35,7 +34,16 @@ const pillCollection = {
   },
 
   refill() {
-    pillCollection.fill(prescription.quantity);
+    buttonRefill.removeEvents();
+
+    const { el, fill } = pillCollection;
+
+    while (el.firstChild) {
+      el.removeChild(el.firstChild);
+    }
+
+    fill(prescription.quantity);
+    cap.close();
   },
 
   init() {

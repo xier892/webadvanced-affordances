@@ -5,16 +5,10 @@ const capunder = {
     return d;
   },
 
-  state: 'full',
-
-  setState() {
-    capunder.state = (retrieveStorage('pillCount') > 0) ? 'full' : 'empty';
-  },
-
   toggleButton() {
-    capunder.setState();
+    bottle.setState();
 
-    switch (capunder.state) {
+    switch (bottle.state.capacity) {
       case 'empty':
         buttonTake.toggle();
         break;
@@ -26,7 +20,6 @@ const capunder = {
   },
 
   init() {
-    capunder.setState();
     capunder.el = capunder.data();
     document.getElementById('top').appendChild(capunder.el);
   }

@@ -19,14 +19,20 @@ const buttonTake = {
 
   toggle() {
     const { el } = buttonTake;
-    if (document.body.contains(el)) {
-      el.remove();
-      buttonRefill.init();
-    }
+    el.disabled = true;
+    setTimeout(() => {
+      if (document.body.contains(el)) {
+        el.remove();
+        buttonRefill.init();
+      } else {
+        el.removeAttribute('disabled');
+      }
+    }, 300);
   },
 
   addEvents() {
     const { el } = buttonTake;
+    el.removeAttribute('disabled');
     el.addEventListener('touchend', (event) => {
       pillCollection.take(prescription.dose);
     }, false);
@@ -34,8 +40,9 @@ const buttonTake = {
 
   init() {
     buttonTake.el = buttonTake.data();
+    buttonTake.el.disabled = true;
     capunder.el.appendChild(buttonTake.el);
-    buttonTake.addEvents();
+    setTimeout(buttonTake.addEvents, retrieveStorage('pillCount', prescription.quantity) * 50 + 500);
   }
 };
 

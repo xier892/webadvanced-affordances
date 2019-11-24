@@ -3,6 +3,9 @@ button {
   min-height: 60px;
   border-radius: 10px;
 }
+button:disabled {
+  opacity: 0.6;
+}
 button > img {
   vertical-align: middle;
 }

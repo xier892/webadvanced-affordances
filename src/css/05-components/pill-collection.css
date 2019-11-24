@@ -3,6 +3,7 @@
   padding-bottom: env(safe-area-inset-bottom);
   display: flex;
   width: 100%;
+  justify-content: center;
   flex-flow: row-reverse wrap;
   transform: rotate(180deg);
 }
