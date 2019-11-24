@@ -1,15 +1,14 @@
-.storage {
+.pill-collection {
   padding: var(--bottle-padding);
   padding-bottom: env(safe-area-inset-bottom);
   display: flex;
   width: 100%;
-  flex-flow: row wrap;
-  justify-content: center;
+  flex-flow: row-reverse wrap;
   transform: rotate(180deg);
 }
 
 @supports (padding: max(0px)) {
-  .storage {
+  .pill-collection {
     padding-bottom: max(var(--bottle-padding), env(safe-area-inset-bottom));
   }
 }

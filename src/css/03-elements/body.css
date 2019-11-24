@@ -2,6 +2,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow-x: hidden;
+  overflow: hidden;
   font-family: 'Nexa', sans-serif;
 }

@@ -1,22 +1,29 @@
-.undercap button {
+.capunder {
+  --color-primary: #6d5d2e;
+  --color-secondary: #fff;
+  display: flex;
+  justify-content: center;
+  margin: 10% 10px 6.4% 10px;
+}
+.capunder button {
   --font-size: 30px;
   margin: 0 10px;
 }
-.undercap-close {
+.capunder-close {
   background-color: var(--color-primary);
   color: #fff;
 }
-.undercap-take, .undercap-refill {
+.capunder-take, .capunder-refill {
   --button-width: 100%;
   width: var(--button-width);
   font-size: var(--font-size);
   font-weight: bold;
 }
-.undercap-take {
+.capunder-take {
   background-color: var(--color-secondary);
   color: var(--color-primary);
 }
-.undercap-refill {
+.capunder-refill {
   background-color: var(--color-primary);
   color: #fff;
 }
