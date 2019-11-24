@@ -22,8 +22,8 @@ const buttonClose = {
 
   init() {
     buttonClose.el = buttonClose.data();
-    capunder.el.appendChild(buttonClose.el);
     buttonClose.addEvents();
+    capunder.el.appendChild(buttonClose.el);
   }
 };
 

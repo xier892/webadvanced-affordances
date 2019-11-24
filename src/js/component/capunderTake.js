@@ -38,11 +38,15 @@ const buttonTake = {
     }, false);
   },
 
-  init() {
+  init(options = '') {
     buttonTake.el = buttonTake.data();
-    buttonTake.el.disabled = true;
+    if (options === 'toggle') {
+      buttonTake.el.disabled = true;
+      setTimeout(buttonTake.addEvents, retrieveStorage('pillCount', prescription.quantity) * 50 + 500);
+    } else {
+      buttonTake.addEvents();
+    }
     capunder.el.appendChild(buttonTake.el);
-    setTimeout(buttonTake.addEvents, retrieveStorage('pillCount', prescription.quantity) * 50 + 500);
   }
 };
 

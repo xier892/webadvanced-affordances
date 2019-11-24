@@ -21,7 +21,7 @@ const buttonRefill = {
     const { el } = buttonRefill;
     if (document.body.contains(el)) {
       el.remove();
-      buttonTake.init();
+      buttonTake.init('toggle');
     }
   },
 
@@ -37,7 +37,7 @@ const buttonRefill = {
 
   init() {
     buttonRefill.el = buttonRefill.data();
-    capunder.el.appendChild(buttonRefill.el);
     buttonRefill.addEvents();
+    capunder.el.appendChild(buttonRefill.el);
   }
 };

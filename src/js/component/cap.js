@@ -133,17 +133,15 @@ const cap = {
 
   init() {
     cap.el = cap.data();
-
     switch (retrieveStorage('capState')) {
       case 'open':
         cap.remove();
         break;
       default:
-        cap.remove();
-        cap.close();
     }
 
     document.getElementById('top').appendChild(cap.el);
+
     cap.addEvents();
   },
 };

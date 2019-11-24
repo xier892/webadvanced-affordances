@@ -18,13 +18,19 @@ const pillCollection = {
     capunder.toggleButton();
   },
 
-  fill(n) {
+  fill(options) {
     const { el, properties: { contents } } = pillCollection;
+    const { quantity, delay } = options;
 
-    for (let i = 0; i < n; i++) {
+    for (let i = 0; i < quantity; i++) {
       const p = new Pill();
       contents.push(p);
-      p.init(50 * i);
+      p.init();
+      if (delay) {
+        p.drop(50 * i);
+      } else {
+        p.append();
+      }
     }
 
     populateStorage('pillCount', contents.length);
@@ -41,7 +47,7 @@ const pillCollection = {
       el.removeChild(el.firstChild);
     }
 
-    fill(prescription.quantity);
+    fill({ quantity: prescription.quantity, delay: true });
     cap.close();
   },
 
@@ -49,7 +55,7 @@ const pillCollection = {
     if (retrieveStorage('pillCount') === null) {
       populateStorage('pillCount', prescription.quantity);
     }
-    pillCollection.fill(retrieveStorage('pillCount'));
+    pillCollection.fill({ quantity: retrieveStorage('pillCount', prescription.quantity), delay: false });
   }
 };
 
