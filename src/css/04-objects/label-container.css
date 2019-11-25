@@ -25,4 +25,7 @@
   .label-container {
     --label-dragzone: auto;
   }
+  .label-wrapper {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
 }

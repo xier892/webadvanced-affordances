@@ -138,7 +138,10 @@ const cap = {
       case 'open':
         cap.remove();
         break;
+      case 'closed':
+        break;
       default:
+        cap.remove();
     }
 
     document.getElementById('top').appendChild(cap.el);

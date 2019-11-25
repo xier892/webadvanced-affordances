@@ -13,29 +13,10 @@
       <section class="top" id="top"></section>
       <section class="label-container">
         <div class="label-wrapper">
-          <div class="label">
-            <label for="dose">take <select name="dose">
-              <option value="1" selected="selected">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select> tablet<span class="normalweight">(s)</span> every tap</label>
-            <label for="quantity">qty: <select name="quantity">
-              <option value="5">5</option>
-              <option value="10">10</option>
-              <option value="15" selected="selected">15</option>
-              <option value="20">20</option>
-              <option value="25">25</option>
-              <option value="30">30</option>
-              <option value="35">35</option>
-              <option value="40">40</option>
-              <option value="45">45</option>
-              <option value="50">50</option>
-              <option value="55">55</option>
-              <option value="60">60</option>
-            </select>
-            <p class="label-date">Date Filled: <span id="label-date-number">11-24-2019</span></p>
+          <div class="label" id="label">
+            <label for="dose">Take <select name="dose" id="label-dose"></select> tablet<span class="normalweight">(s)</span> every tap</label>
+            <label for="quantity">QTY: <input id="label-quantity" name="quantity" type="number" inputmode="numeric" pattern="[0-9]*"> <span class="label-quantity-max" id="label-quantity-max">(max: <span id="label-quantity-max-number"></span>)</span></label>
+            <p class="label-date">Date Filled: <span id="label-date-number"></span></p>
           </div>
         </div>
       </section>

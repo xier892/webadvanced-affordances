@@ -1,9 +1,9 @@
 .pill {
   --pill-size: calc(20vw - var(--bottle-padding));
-  --background-color: #fff2cc;
+  --background-color: #fff6da;
   --indent-weight: 5px;
   --indent-width: 65%;
-  --indent-color: #c99908;
+  --indent-color: #c19100;
   display: flex;
   flex-flow: column-reverse wrap;
   justify-content: center;

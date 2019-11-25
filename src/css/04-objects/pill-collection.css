@@ -6,6 +6,8 @@
   justify-content: center;
   flex-flow: row-reverse wrap;
   transform: rotate(180deg);
+  position: absolute;
+  bottom: 0;
 }
 
 @supports (padding: max(0px)) {

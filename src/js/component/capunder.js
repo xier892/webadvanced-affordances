@@ -1,8 +1,6 @@
 const capunder = {
-  toggleButton() {
-    bottle.setOpenState();
-
-    switch (bottle.state.capacity) {
+  toggleButton(s = 'full') {
+    switch (s) {
       case 'empty':
         buttonTake.toggle();
         break;
@@ -10,6 +8,7 @@ const capunder = {
         buttonRefill.toggle();
         break;
       default:
+        buttonRefill.toggle();
     }
   },
 

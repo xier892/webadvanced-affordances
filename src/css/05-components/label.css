@@ -1,14 +1,13 @@
 .label {
   --background-color: #fff;
   --label-padding: 25px;
-  --shadow-height: 6px;
   --font-size: 200%;
   --line-height: calc(var(--font-size) + 5px);
   --paragraph-spacing: 10px;
   --label-translate: 100%;
   --text-color: #555;
+  --shadow-height: 2px;
   --shadow-color: var(--color-muted);
-  --shadow-height: 4px;
   background-color: var(--background-color);
   display: inline-flex;
   position: relative;
@@ -19,11 +18,9 @@
   box-shadow: calc(-1 * var(--label-padding)) 0px 0px 0px var(--background-color), var(--label-padding) 0px 0px 0px var(--background-color);
   color: var(--text-color);
   line-height: var(--line-height);
-  text-transform: uppercase;
   z-index: 10;
-  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
-.label::before {
+/* .label::before {
   content: '';
   position: absolute;
   width: 100%;
@@ -32,7 +29,7 @@
   bottom: calc(-1 * var(--shadow-height));
   left: 0;
   opacity: 0.5;
-}
+} */
 .label::after {
   content: '';
   display: block;
@@ -41,7 +38,8 @@
   left: 100%;
   height: 1px;
 }
-.label select {
+.label select,
+.label input {
   --background-color: #f6f6f6;
   --highlight-color: #d1d1d1;
   --highlight-size: 2px;
@@ -63,18 +61,22 @@
   -moz-box-shadow: inset 0 calc(-1 * var(--highlight-size)) 0 var(--highlight-color);
   box-shadow: inset 0 calc(-1 * var(--highlight-size)) 0 var(--highlight-color);
 }
-.label select:disabled {
+.label select:disabled,
+.label input:disabled {
   --background-color: #fff;
   box-shadow: none;
 }
 .label select:active,
-.label select:focus {
+.label select:focus,
+.label input:active,
+.label input:focus {
   --background-color: yellow;
   --highlight-color: var(--color-muted);
   border: none;
   outline: none;
 }
-.label select:focus {
+.label select:focus,
+.label input:focus {
   --background-color: #fff;
   --highlight-color: var(--color-active);
   --text-color: var(--color-active);
@@ -86,12 +88,14 @@ label[for='dose'] {
   font-size: var(--font-size);
   font-weight: bold;
   margin-bottom: var(--paragraph-spacing);
+  text-transform: uppercase;
 }
 label[for='quantity'], .label p {
   font-size: var(--font-size-2);
 }
-.label-date {
-  text-transform: none;
+.label-quantity-max {
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 @media screen and (orientation: landscape) {

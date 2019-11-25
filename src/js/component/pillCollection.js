@@ -4,9 +4,17 @@ const pillCollection = {
     contents: []
   },
 
+  count() {
+    return pillCollection.properties.contents.length;
+  },
+
   take(n) {
     const { el, properties: { contents } } = pillCollection;
     const nn = Math.min(contents.length, n);
+
+    if (!cap.state.open) {
+      cap.remove();
+    }
 
     for (let i = 1; i <= nn; i++) {
       contents[contents.length - i].withdraw();
@@ -15,12 +23,12 @@ const pillCollection = {
     contents.splice(contents.length - nn, nn);
     populateStorage('pillCount', Math.max(0, retrieveStorage('pillCount') - nn));
 
-    capunder.toggleButton();
+    bottle.prepare();
   },
 
-  fill(options) {
+  fill(quantity, options = {}) {
     const { el, properties: { contents } } = pillCollection;
-    const { quantity, drop } = options;
+    const { drop } = options;
 
     for (let i = 0; i < quantity; i++) {
       const p = new Pill();
@@ -35,7 +43,7 @@ const pillCollection = {
 
     populateStorage('pillCount', contents.length);
 
-    capunder.toggleButton();
+    bottle.prepare();
   },
 
   refill() {
@@ -47,15 +55,16 @@ const pillCollection = {
       el.removeChild(el.firstChild);
     }
 
-    fill({ quantity: prescription.quantity, drop: true });
+    label.exportInformation();
+    fill(prescription.quantity, { drop: true });
     cap.close();
   },
 
   init() {
-    if (retrieveStorage('pillCount') === null) {
-      populateStorage('pillCount', prescription.quantity);
+    if (!retrieveStorage('pillCount')) {
+      populateStorage('pillCount', 0);
     }
-    pillCollection.fill({ quantity: retrieveStorage('pillCount', prescription.quantity) });
+    pillCollection.fill(retrieveStorage('pillCount'));
   }
 };
 
