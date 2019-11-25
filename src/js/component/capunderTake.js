@@ -1,22 +1,4 @@
 const buttonTake = {
-  data() {
-    const d = document.createElement('button');
-    d.className = 'capunder-take';
-    d.type = 'button';
-    d.name = 'take';
-
-    const contents = document.createDocumentFragment();
-    const img = document.createElement('img');
-    img.src = 'dist/assets/image/material-arrow-drop-up.svg';
-    img.alt = 'up arrow';
-    contents.appendChild(document.createTextNode('take'));
-    contents.appendChild(document.createTextNode(' '));
-    contents.appendChild(img);
-
-    d.appendChild(contents);
-    return d;
-  },
-
   toggle() {
     const { el } = buttonTake;
     el.disabled = true;
@@ -36,6 +18,24 @@ const buttonTake = {
     el.addEventListener('touchend', (event) => {
       pillCollection.take(prescription.dose);
     }, false);
+  },
+
+  data() {
+    const d = document.createElement('button');
+    d.className = 'capunder-take';
+    d.type = 'button';
+    d.name = 'take';
+
+    const contents = document.createDocumentFragment();
+    const img = document.createElement('img');
+    img.src = 'dist/assets/image/material-arrow-drop-up.svg';
+    img.alt = 'up arrow';
+    contents.appendChild(document.createTextNode('take'));
+    contents.appendChild(document.createTextNode(' '));
+    contents.appendChild(img);
+
+    d.appendChild(contents);
+    return d;
   },
 
   init(options = '') {

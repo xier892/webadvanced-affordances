@@ -1,11 +1,4 @@
 const pill = {
-  data() {
-    const d = document.createElement('div');
-    d.className = 'pill';
-    d.style.setProperty('--pill-rotation', `${getRandomInt(0, 360)}deg`);
-    return d;
-  },
-
   append() {
     pillCollection.el.appendChild(this.el);
   },
@@ -28,6 +21,13 @@ const pill = {
     } else {
       add();
     }
+  },
+
+  data() {
+    const d = document.createElement('div');
+    d.className = 'pill';
+    d.style.setProperty('--pill-rotation', `${getRandomInt(0, 360)}deg`);
+    return d;
   },
 
   init() {

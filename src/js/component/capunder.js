@@ -1,12 +1,6 @@
 const capunder = {
-  data() {
-    const d = document.createElement('section');
-    d.className = 'capunder';
-    return d;
-  },
-
   toggleButton() {
-    bottle.setState();
+    bottle.setOpenState();
 
     switch (bottle.state.capacity) {
       case 'empty':
@@ -17,6 +11,12 @@ const capunder = {
         break;
       default:
     }
+  },
+
+  data() {
+    const d = document.createElement('section');
+    d.className = 'capunder';
+    return d;
   },
 
   init() {

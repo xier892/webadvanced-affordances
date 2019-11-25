@@ -1,16 +1,13 @@
 .capunder {
-  --color-primary: #6d5d2e;
-  --color-secondary: #fff;
   display: flex;
   justify-content: center;
   margin: 10% 10px 6.4% 10px;
 }
 .capunder button {
-  --font-size: 30px;
   margin: 0 10px;
 }
 .capunder-close {
-  background-color: var(--color-primary);
+  background-color: var(--color-normal);
   color: #fff;
 }
 .capunder-take, .capunder-refill {
@@ -20,10 +17,16 @@
   font-weight: bold;
 }
 .capunder-take {
-  background-color: var(--color-secondary);
-  color: var(--color-primary);
+  background-color: #fff;
+  color: var(--color-normal);
 }
 .capunder-refill {
-  background-color: var(--color-primary);
+  background-color: var(--color-normal);
   color: #fff;
+}
+
+@media screen and (max-width: 360px) {
+  .capunder {
+    margin: 8% 10px 6.4% 10px;
+  }
 }

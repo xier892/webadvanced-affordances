@@ -1,6 +1,7 @@
 button {
-  min-width: 60px;
-  min-height: 60px;
+  --min-size: 60px;
+  min-width: var(--min-size);
+  min-height: var(--min-size);
   border-radius: 10px;
 }
 button:disabled {
@@ -8,4 +9,10 @@ button:disabled {
 }
 button > img {
   vertical-align: middle;
+}
+
+@media screen and (max-width: 360px) {
+  button {
+    --min-size: 52px;
+  }
 }

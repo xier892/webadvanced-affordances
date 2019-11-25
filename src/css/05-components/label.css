@@ -1,0 +1,101 @@
+.label {
+  --background-color: #fff;
+  --label-padding: 25px;
+  --shadow-height: 6px;
+  --font-size: 200%;
+  --line-height: calc(var(--font-size) + 5px);
+  --paragraph-spacing: 10px;
+  --label-translate: 100%;
+  --text-color: #555;
+  --shadow-color: var(--color-muted);
+  --shadow-height: 4px;
+  background-color: var(--background-color);
+  display: inline-flex;
+  position: relative;
+  min-width: 100vw;
+  flex-flow: column;
+  margin-left: 100%;
+  padding: var(--label-padding) 0 var(--label-padding) var(--label-padding);
+  box-shadow: calc(-1 * var(--label-padding)) 0px 0px 0px var(--background-color), var(--label-padding) 0px 0px 0px var(--background-color);
+  color: var(--text-color);
+  line-height: var(--line-height);
+  text-transform: uppercase;
+  z-index: 10;
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.label::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  background-color: var(--shadow-color);
+  height: var(--shadow-height);
+  bottom: calc(-1 * var(--shadow-height));
+  left: 0;
+  opacity: 0.5;
+}
+.label::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  left: 100%;
+  height: 1px;
+}
+.label select {
+  --background-color: #f6f6f6;
+  --highlight-color: #d1d1d1;
+  --highlight-size: 2px;
+  --select-padding: 10px;
+  background-color: var(--background-color);
+  min-width: 42px;
+  min-height: 42px;
+  padding: 0 var(--select-padding);
+  margin: 0;
+  text-align: center;
+  text-align-last: center;
+  border: none;
+  border-radius: 0;
+  font-weight: bold;
+  color: var(--text-color);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -webkit-box-shadow: inset 0 calc(-1 * var(--highlight-size)) 0 var(--highlight-color);
+  -moz-box-shadow: inset 0 calc(-1 * var(--highlight-size)) 0 var(--highlight-color);
+  box-shadow: inset 0 calc(-1 * var(--highlight-size)) 0 var(--highlight-color);
+}
+.label select:disabled {
+  --background-color: #fff;
+  box-shadow: none;
+}
+.label select:active,
+.label select:focus {
+  --background-color: yellow;
+  --highlight-color: var(--color-muted);
+  border: none;
+  outline: none;
+}
+.label select:focus {
+  --background-color: #fff;
+  --highlight-color: var(--color-active);
+  --text-color: var(--color-active);
+}
+.label option {
+  color: #555;
+}
+label[for='dose'] {
+  font-size: var(--font-size);
+  font-weight: bold;
+  margin-bottom: var(--paragraph-spacing);
+}
+label[for='quantity'], .label p {
+  font-size: var(--font-size-2);
+}
+.label-date {
+  text-transform: none;
+}
+
+@media screen and (orientation: landscape) {
+  .label {
+    --label-offset: 0;
+  }
+}

@@ -1,4 +1,11 @@
 const buttonClose = {
+  addEvents() {
+    const { el } = buttonClose;
+    el.addEventListener('touchend', (event) => {
+      cap.replace();
+    }, false);
+  },
+
   data() {
     const d = document.createElement('button');
     d.className = 'capunder-close';
@@ -11,13 +18,6 @@ const buttonClose = {
 
     d.appendChild(img);
     return d;
-  },
-
-  addEvents() {
-    const { el } = buttonClose;
-    el.addEventListener('touchend', (event) => {
-      cap.replace();
-    }, false);
   },
 
   init() {

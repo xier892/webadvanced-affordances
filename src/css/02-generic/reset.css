@@ -2,6 +2,7 @@ html {
 	box-sizing: border-box;
 }
 * {
+	-webkit-overflow-scrolling: touch;
 	box-sizing: inherit;
 }
 html, body, div, span, applet, object, iframe,

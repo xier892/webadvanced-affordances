@@ -15,7 +15,6 @@ gulp.task('js', function() {
   return gulp.src([
     'src/js/lib/*.js',
     'src/js/*.js',
-    'src/js/object/*.js',
     'src/js/component/*.js'])
     .pipe(concat('index.js'))
     .pipe(babel({

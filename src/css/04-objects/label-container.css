@@ -1,0 +1,28 @@
+.label-container {
+  --label-dragzone: calc(77.5vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  --label-dragzone: calc(var(--vh, 1vh) * 77.5 - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  position: absolute;
+  display: flex;
+  width: 100vw;
+  height: var(--label-dragzone);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  align-items: center;
+  z-index: 5;
+}
+.label-wrapper {
+  display: flex;
+  height: 100%;
+  padding-bottom: calc(12.5vh + env(safe-area-inset-bottom));
+  padding-bottom: calc(var(--vh, 1vh) * 12.5 + env(safe-area-inset-bottom));
+  align-items: center;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+@media screen and (orientation: landscape) {
+  .label-container {
+    --label-dragzone: auto;
+  }
+}

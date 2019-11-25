@@ -1,24 +1,10 @@
 const cap = {
-  data() {
-    const d = document.createElement('div');
-    d.className = 'cap';
-    const fragment = document.createDocumentFragment();
-    for (let i = 0; i <= 12; i++) {
-      const indent = document.createElement('div');
-      indent.className = 'cap-indent';
-      fragment.appendChild(indent);
-    }
-    d.appendChild(fragment);
-    return d;
-  },
-
   properties: {
     width: 0,
     height: 0
   },
 
   state: {
-    open: false,
     timer: 0,
     clientX: 0,
     clientY: 0,
@@ -26,34 +12,37 @@ const cap = {
     deltaY: 0
   },
 
-  setState(s) {
+  setOpenState(s) {
     cap.state.open = (s === 'open');
     populateStorage('capState', s);
   },
 
   depress() {
+    cap.state.action = 'depressed';
     cap.el.className = ('cap pressed');
   },
 
   move() {
+    cap.state.action = 'dragging';
     cap.el.className = ('cap dragging');
   },
 
   reset() {
+    delete cap.state.action;
     cap.el.classList.remove('pressed', 'dragging');
     cap.el.removeAttribute('style');
   },
 
   remove() {
-    const { el, setState } = cap;
-    el.className = ('cap dragged');
-    setState('open');
+    cap.state.action = 'dragged';
+    cap.el.className = ('cap dragged');
+    cap.setOpenState('open');
   },
 
   replace() {
-    const { el, setState } = cap;
-    el.classList.remove('dragged');
-    setState('closed');
+    delete cap.state.action;
+    cap.el.classList.remove('dragged');
+    cap.setOpenState('closed');
   },
 
   close() {
@@ -63,26 +52,26 @@ const cap = {
   addEvents() {
     const {
       el,
+      properties,
+      state,
       depress,
       move,
       reset,
       remove,
       replace
     } = cap;
+    let { width, height } = properties;
     let {
-      properties: { width, height },
-      state: {
-        timer,
-        clientX,
-        clientY,
-        deltaX,
-        deltaY
-      }
-    } = cap;
+      timer,
+      clientX,
+      clientY,
+      deltaX,
+      deltaY
+    } = state;
     width = el.offsetWidth;
     height = el.offsetHeight;
 
-    window.addEventListener('orientationchange', () => {
+    window.addEventListener('resize', () => {
       width = el.offsetWidth;
       height = el.offsetHeight;
     });
@@ -100,7 +89,7 @@ const cap = {
       if (timer) {
         clearTimeout(timer);
       }
-      if (target.classList.contains('pressed') || target.classList.contains('dragging')) {
+      if (state.action === 'depressed' || state.action === 'dragging') {
         move();
         deltaX = touches[0].clientX - clientX;
         deltaY = touches[0].clientY - clientY;
@@ -111,11 +100,10 @@ const cap = {
     }, false);
 
     el.addEventListener('touchend', (event) => {
-      const { target } = event;
       if (timer) {
         clearTimeout(timer);
       }
-      if (target.classList.contains('dragging') && deltaX >= width / 2.5 || -deltaY >= height / 2.5) {
+      if (state.action === 'dragging' && deltaX >= width / 2.5 || -deltaY >= height / 2.5) {
         remove();
       }
       reset();
@@ -129,6 +117,19 @@ const cap = {
       }
       reset();
     }, false);
+  },
+
+  data() {
+    const d = document.createElement('div');
+    d.className = 'cap';
+    const fragment = document.createDocumentFragment();
+    for (let i = 0; i <= 12; i++) {
+      const indent = document.createElement('div');
+      indent.className = 'cap-indent';
+      fragment.appendChild(indent);
+    }
+    d.appendChild(fragment);
+    return d;
   },
 
   init() {

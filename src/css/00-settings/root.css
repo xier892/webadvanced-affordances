@@ -1,6 +1,11 @@
 :root {
   --background-color: #ffbf00;
+  --color-normal: #6d5d2e;
+  --color-active: #ff7811;
+  --color-muted: #dba400;
   --bottle-padding: 2vw;
+  --font-size: 30px;
+  --font-size2: 21px;
 }
 
 @media screen and (min-width: 500px) {

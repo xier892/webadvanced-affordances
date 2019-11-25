@@ -4,12 +4,12 @@ const bottle = {
     capacity: 'full'
   },
 
-  setState() {
+  setOpenState() {
     bottle.state.capacity = (retrieveStorage('pillCount') > 0) ? 'full' : 'empty';
   },
 
   init() {
-    bottle.setState();
+    bottle.setOpenState();
   }
 };
 
