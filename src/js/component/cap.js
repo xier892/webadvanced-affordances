@@ -19,12 +19,12 @@ const cap = {
 
   depress() {
     cap.state.action = 'depressed';
-    cap.el.className = ('cap pressed');
+    cap.el.classList.add('pressed');
   },
 
   move() {
     cap.state.action = 'dragging';
-    cap.el.className = ('cap dragging');
+    cap.el.classList.add('dragging');
   },
 
   reset() {
@@ -35,7 +35,7 @@ const cap = {
 
   remove() {
     cap.state.action = 'dragged';
-    cap.el.className = ('cap dragged');
+    cap.el.classList.add('dragged');
     cap.setOpenState('open');
   },
 

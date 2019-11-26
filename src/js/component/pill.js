@@ -4,7 +4,7 @@ const pill = {
   },
 
   withdraw() {
-    this.el.className = 'pill withdrawn';
+    this.el.classList.add('withdrawn');
     this.el.style.setProperty('--z-rotation', getRandomInt(0, 0.5));
   },
 

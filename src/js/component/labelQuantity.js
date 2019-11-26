@@ -66,7 +66,7 @@ const labelQuantity = {
       }
       input('');
       inputMax(SETTINGS.PRESCRIPTION_QTY_MAX);
-      elMax.className += ' visible';
+      elMax.classList.add('visible');
     });
 
     el.addEventListener('blur', () => {
@@ -89,7 +89,7 @@ const labelQuantity = {
       } else {
         inputPlaceholder(value());
       }
-      elMax.className = 'label-quantity-max';
+      elMax.classList.remove('visible');
       inputMax(SETTINGS.PRESCRIPTION_QTY_MAX);
     });
   },
