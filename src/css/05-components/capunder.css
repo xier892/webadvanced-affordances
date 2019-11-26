@@ -30,3 +30,8 @@
     margin: 8% 10px 6.4% 10px;
   }
 }
+@media screen and (orientation: landscape) {
+  .capunder {
+    margin: 6.4% 10px;
+  }
+}

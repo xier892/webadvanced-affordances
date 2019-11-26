@@ -1,4 +1,4 @@
-const setMaximumCapacity = () => Math.ceil((window.innerWidth / getWidthOfElement('pill transformedWidthTest')) * ((window.innerHeight - getHeightOfElement('cap')) / getWidthOfElement('pill transformedWidthTest')));
+const setMaximumCapacity = () => Math.ceil((window.outerWidth / getWidthOfElement('pill transformedWidthTest')) * ((window.outerHeight - getHeightOfElement('cap')) / getWidthOfElement('pill transformedWidthTest')));
 
 const setViewportHeight = () => {
   const vh = window.innerHeight * 0.01;

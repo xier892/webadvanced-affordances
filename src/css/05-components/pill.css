@@ -1,9 +1,12 @@
 .pill {
   --pill-size: calc(20vw - var(--bottle-padding));
-  --background-color: #fff6da;
+  /* --background-color: #fff6da; */
+  /* --background-color: #fff2cc; */
+  --background-color: #ffedb7;
   --indent-weight: 5px;
   --indent-width: 65%;
-  --indent-color: #c19100;
+  /* --indent-color: #c19100; */
+  --indent-color: #c79600;
   display: flex;
   flex-flow: column-reverse wrap;
   justify-content: center;
@@ -32,7 +35,7 @@
   height: calc(var(--indent-weight) / 1.5);
   border-top-left-radius: calc(var(--indent-weight) / 4);
   border-top-right-radius: calc(var(--indent-weight) / 4);
-  background-color: #fff;
+  background-color: #fff8e5;
 }
 
 @media screen and (orientation: landscape) {
