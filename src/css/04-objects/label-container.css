@@ -1,6 +1,7 @@
 .label-container {
-  --label-dragzone: calc(77.5vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
-  --label-dragzone: calc(var(--vh, 1vh) * 77.5 - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  /* --label-dragzone: calc(77.5vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  --label-dragzone: calc(var(--vh, 1vh) * 77.5 - env(safe-area-inset-top) - env(safe-area-inset-bottom)); */
+  --label-dragzone: calc(77.5% - env(safe-area-inset-top) - env(safe-area-inset-bottom));
   position: absolute;
   display: flex;
   width: 100vw;

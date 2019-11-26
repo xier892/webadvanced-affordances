@@ -22,7 +22,7 @@
 .pill.withdrawn {
   /* transform: translateY(100vh) rotate3d(1, 0, var(--z-rotation), 90deg); */
   transform: translate3d(0, 100vh, 0);
-  transform: translate3d(0, calc(var(--vh, 1vh) * 100), 0);
+  /* transform: translate3d(0, calc(var(--vh, 1vh) * 100), 0); */
 }
 .pill::before {
   content: '';
