@@ -4,4 +4,6 @@ body {
   justify-content: center;
   overflow: hidden;
   font-family: 'Nexa', sans-serif;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
 }

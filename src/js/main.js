@@ -21,3 +21,7 @@ window.addEventListener('resize', () => {
   setViewportHeight();
   SETTINGS.PRESCRIPTION_QTY_MAX = setMaximumCapacity();
 });
+window.addEventListener('orientationchange', () => {
+  setViewportHeight();
+  SETTINGS.PRESCRIPTION_QTY_MAX = setMaximumCapacity();
+});

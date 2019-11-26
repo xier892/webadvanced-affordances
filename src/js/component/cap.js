@@ -75,6 +75,10 @@ const cap = {
       width = el.offsetWidth;
       height = el.offsetHeight;
     });
+    window.addEventListener('orientationchange', () => {
+      width = el.offsetWidth;
+      height = el.offsetHeight;
+    });
 
     el.addEventListener('touchstart', (event) => {
       const { touches } = event;

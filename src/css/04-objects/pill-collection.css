@@ -9,9 +9,3 @@
   position: absolute;
   bottom: 0;
 }
-
-@supports (padding: max(0px)) {
-  .pill-collection {
-    padding-bottom: max(var(--bottle-padding), env(safe-area-inset-bottom));
-  }
-}

@@ -64,6 +64,7 @@
 .label select:disabled,
 .label input:disabled {
   --background-color: #fff;
+  color: var(--text-color);
   box-shadow: none;
 }
 .label select:active,
@@ -93,9 +94,14 @@ label[for='dose'] {
 label[for='quantity'], .label p {
   font-size: var(--font-size-2);
 }
+
 .label-quantity-max {
   opacity: 0;
-  transition: opacity 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: opacity 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.label-quantity-max.visible {
+  opacity: 1;
 }
 
 @media screen and (orientation: landscape) {

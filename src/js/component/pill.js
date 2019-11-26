@@ -4,7 +4,8 @@ const pill = {
   },
 
   withdraw() {
-    this.el.style.transform = `translateY(100vh) rotate3d(1, 0, ${getRandomInt(0, 0.5)}, 90deg)`;
+    this.el.className = 'pill withdrawn';
+    this.el.style.setProperty('--z-rotation', getRandomInt(0, 0.5));
   },
 
   drop(delay = 0) {

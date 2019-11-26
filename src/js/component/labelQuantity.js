@@ -61,19 +61,21 @@ const labelQuantity = {
     } = labelQuantity;
 
     el.addEventListener('focus', () => {
-      inputPlaceholder(value());
+      if (value() && RegExp('^[0-9]*$').test(value())) {
+        inputPlaceholder(value());
+      }
       input('');
       inputMax(SETTINGS.PRESCRIPTION_QTY_MAX);
-      elMax.style.opacity = '1';
+      elMax.className += ' visible';
     });
 
     el.addEventListener('blur', () => {
-      if (!value()) {
+      if (!value() || !RegExp('^[0-9]*$').test(value())) {
         input(placeholderValue());
       } else {
-        inputPlaceholder();
+        inputPlaceholder(value());
       }
-      elMax.removeAttribute('style');
+      elMax.className = 'label-quantity-max';
       inputMax(SETTINGS.PRESCRIPTION_QTY_MAX);
     });
   },

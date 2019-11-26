@@ -16,11 +16,12 @@ const label = {
 
   exportInformation() {
     updatePrescription({
-      quantity: (labelQuantity.value()) ? labelQuantity.value() : labelQuantity.placeholderValue(),
+      quantity: (labelQuantity.value() && RegExp('^[0-9]*$').test(labelQuantity.value())) ? labelQuantity.value() : labelQuantity.placeholderValue(),
       dose: labelDose.value()
     });
     label.toggle();
     labelQuantity.input(prescription.quantity);
+    labelQuantity.inputPlaceholder(prescription.quantity);
     labelDose.select(prescription.dose);
     labelDate.setDate();
     label.toggleInput('disable');
