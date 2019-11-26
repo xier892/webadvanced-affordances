@@ -7,6 +7,7 @@ const composer = require('gulp-uglify/composer');
 
 const uglify = composer(uglifyes, console);
 const postcss = require('gulp-postcss');
+const autoprefixer = require('gulp-autoprefixer');
 // const cssvariables = require('postcss-css-variables');
 const concatCss = require('gulp-concat-css');
 const uglifycss = require('gulp-uglifycss');
@@ -29,6 +30,9 @@ gulp.task('css', function() {
     'src/css/*/*.css'])
     .pipe(concatCss('main.css', {
       rebaseUrls: false
+    }))
+    .pipe(autoprefixer({
+      cascade: false
     }))
     // .pipe(postcss([
     //   cssvariables()
