@@ -21,7 +21,7 @@ const label = {
     });
     label.toggle();
     labelQuantity.input(prescription.quantity);
-    labelQuantity.inputPlaceholder(prescription.quantity);
+    labelQuantity.inputPlaceholder();
     labelDose.select(prescription.dose);
     labelDate.setDate();
     label.toggleInput('disable');

@@ -70,8 +70,22 @@ const labelQuantity = {
     });
 
     el.addEventListener('blur', () => {
-      if (!value() || !RegExp('^[0-9]*$').test(value())) {
+      if (!value() || !RegExp(/^\d*\.?\d*$/).test(value())) {
         input(placeholderValue());
+      } else if (!RegExp('^[0-9]*$').test(value())
+      || value() < SETTINGS.PRESCRIPTION_QTY_MIN
+      || value() > SETTINGS.PRESCRIPTION_QTY_MAX) {
+        const v = Math.round(value());
+        if (v < SETTINGS.PRESCRIPTION_QTY_MIN) {
+          input(SETTINGS.PRESCRIPTION_QTY_MIN);
+          inputPlaceholder(SETTINGS.PRESCRIPTION_QTY_MIN);
+        } else if (v > SETTINGS.PRESCRIPTION_QTY_MAX) {
+          input(SETTINGS.PRESCRIPTION_QTY_MAX);
+          inputPlaceholder(SETTINGS.PRESCRIPTION_QTY_MAX);
+        } else {
+          input(v);
+          inputPlaceholder(v);
+        }
       } else {
         inputPlaceholder(value());
       }
