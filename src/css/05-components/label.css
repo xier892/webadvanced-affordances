@@ -43,11 +43,9 @@
   --background-color: #f6f6f6;
   --highlight-color: #d1d1d1;
   --highlight-size: 2px;
-  --select-padding: 10px;
   background-color: var(--background-color);
-  min-width: 42px;
+  min-width: 48px;
   min-height: 42px;
-  padding: 0 var(--select-padding);
   margin: 0;
   text-align: center;
   text-align-last: center;

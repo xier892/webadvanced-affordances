@@ -2,13 +2,16 @@ const labelQuantity = {
   el: document.getElementById('label-quantity'),
   elMax: document.getElementById('label-quantity-max'),
   elMaxNumber: document.getElementById('label-quantity-max-number'),
+  state: {
+    placeholder: prescription.quantity
+  },
 
   value() {
     return labelQuantity.el.value;
   },
 
   placeholderValue() {
-    return labelQuantity.el.placeholder;
+    return labelQuantity.state.placeholder;
   },
 
   input(n) {
@@ -16,8 +19,10 @@ const labelQuantity = {
   },
 
   inputPlaceholder(n) {
+    labelQuantity.state.placeholder = n;
     labelQuantity.el.placeholder = n;
     if (!n) {
+      delete labelQuantity.state.placeholder;
       labelQuantity.el.removeAttribute('placeholder');
     }
   },
@@ -35,17 +40,21 @@ const labelQuantity = {
       el,
       elMax,
       elMaxNumber,
+      value,
       inputMax
     } = labelQuantity;
     switch (s) {
       case 'enable':
         el.removeAttribute('disabled');
+        el.setAttribute('max', '999');
         break;
       case 'disable':
         el.disabled = true;
+        el.setAttribute('max', value());
         break;
       default:
         el.removeAttribute('disabled');
+        el.setAttribute('max', '999');
     }
   },
 
@@ -103,8 +112,7 @@ const labelQuantity = {
       addEvents
     } = labelQuantity;
 
-    el.setAttribute('min', SETTINGS.PRESCRIPTION_QTY_MIN);
-    el.setAttribute('max', SETTINGS.PRESCRIPTION_QTY_MAX);
+    el.setAttribute('max', '999');
     input(prescription.quantity);
     toggle('disable');
 

@@ -30,6 +30,10 @@ const bottle = {
     }
   },
 
+  empty() {
+    pillCollection.take(pillCollection.count());
+  },
+
   init() {
     bottle.setOpenState('fromStorage');
   }
