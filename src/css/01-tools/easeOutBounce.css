@@ -1,36 +1,36 @@
 @keyframes easeOutBounce {
   0% {
-    transform: translateY(100vh) rotate(var(--pill-rotation));
+    transform: translate3d(0, 100vh, 0) rotate3d(0, 0, 1, var(--pill-rotation));
   }
   12% {
-    transform: translateY(89.11vh) rotate(var(--pill-rotation));
+    transform: translate3d(0, 89.11vh, 0) rotate3d(0, 0, 1, var(--pill-rotation));
   }
   24% {
-    transform: translateY(56.44vh) rotate(var(--pill-rotation));
+    transform: translate3d(0, 56.44vh, 0) rotate3d(0, 0, 1, var(--pill-rotation));
   }
   36% {
-    transform: translateY(1.99vh) rotate(var(--pill-rotation));
+    transform: translate3d(0, 1.99vh, 0) rotate3d(0, 0, 1, var(--pill-rotation));
   }
   54% {
-    transform: translateY(24.98vh) rotate(var(--pill-rotation));
+    transform: translate3d(0, 24.98vh, 0) rotate3d(0, 0, 1, var(--pill-rotation));
   }
   74% {
-    transform: translateY(1.63vh) rotate(var(--pill-rotation));
+    transform: translate3d(0, 1.63vh, 0) rotate3d(0, 0, 1, var(--pill-rotation));
   }
   82% {
-    transform: translateY(6.25vh) rotate(var(--pill-rotation));
+    transform: translate3d(0, 6.25vh, 0) rotate3d(0, 0, 1, var(--pill-rotation));
   }
   92% {
-    transform: translateY(0.66vh) rotate(var(--pill-rotation));
+    transform: translate3d(0, 0.66vh, 0) rotate3d(0, 0, 1, var(--pill-rotation));
   }
   96% {
-    transform: translateY(1.54vh) rotate(var(--pill-rotation));
+    transform: translate3d(0, 1.54vh, 0) rotate3d(0, 0, 1, var(--pill-rotation));
   }
 	100% {
-		transform: translateY(0vh) rotate(var(--pill-rotation));
+		transform: translate3d(0, 0vh, 0) rotate3d(0, 0, 1, var(--pill-rotation));
 	}
 }
 
 .easeOutBounce {
-  animation: 0.5s easeOutBounce;
+  animation: 0.5s easeOutBounce backwards;
 }

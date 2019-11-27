@@ -1,27 +1,13 @@
 class Pill {
-  append() {
-    pillCollection.el.appendChild(this.el);
-  }
-
   withdraw() {
     this.el.classList.add('withdrawn');
     this.el.style.setProperty('--z-rotation', getRandomInt(0, 0.5));
   }
 
   drop(delay = 0) {
-    const add = () => {
-      this.el.classList.add('easeOutBounce');
-      promiseAnimationEnd(this.el).then(() => {
-        this.el.classList.remove('easeOutBounce');
-      });
-      this.append();
-    };
-
-    if (delay > 0) {
-      setTimeout(add, delay);
-    } else {
-      add();
-    }
+    this.el.style.animationDelay = `${delay}ms`;
+    this.el.classList.add('easeOutBounce');
+    return this.el;
   }
 
   static data() {

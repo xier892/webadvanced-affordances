@@ -10,6 +10,10 @@
   flex-flow: column;
   justify-content: space-between;
   position: relative;
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.bottle.flipped {
+  transform: rotate3d(0, 0, 1, 180deg);
 }
 /* .bottle::after {
   content: '';

@@ -45,10 +45,6 @@ const cap = {
     cap.setOpenState('closed');
   },
 
-  close() {
-    setTimeout(cap.replace, retrieveStorage('pillCount', prescription.quantity) * 50 + 250);
-  },
-
   addEvents() {
     const {
       el,

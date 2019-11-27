@@ -33,7 +33,12 @@ const bottle = {
   },
 
   empty() {
-    pillCollection.take(pillCollection.count());
+    bottle.el.classList.add('flipped');
+    pillCollection.take(pillCollection.count()).then(() => {
+      setTimeout(() => {
+        bottle.el.classList.remove('flipped');
+      }, 300);
+    });
   },
 
   init() {

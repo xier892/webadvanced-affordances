@@ -30,11 +30,13 @@ const pillCollection = {
     }
 
     bottle.prepare(Promise.all(transitionPromises));
+    return Promise.all(transitionPromises);
   },
 
   fill(quantity, options = {}) {
     const { el, properties: { contents }, updatePillCount } = pillCollection;
     const { drop } = options;
+    const fragment = document.createDocumentFragment();
     const animationPromises = [];
 
     for (let i = 0; i < quantity; i++) {
@@ -42,15 +44,15 @@ const pillCollection = {
       contents.push(p);
       p.init();
       if (drop) {
-        p.drop(50 * i);
+        fragment.appendChild(p.drop(50 * i));
         animationPromises.push(promiseAnimationEnd(p.el));
       } else {
-        p.append();
+        fragment.appendChild(p.el);
       }
     }
 
+    el.appendChild(fragment);
     updatePillCount();
-
     bottle.prepare();
 
     return Promise.all(animationPromises);
