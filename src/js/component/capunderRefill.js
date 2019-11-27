@@ -3,7 +3,7 @@ const buttonRefill = {
     const { el } = buttonRefill;
     if (document.body.contains(el)) {
       el.remove();
-      buttonTake.init('toggle');
+      buttonTake.init('disabled');
     }
   },
 
@@ -38,6 +38,6 @@ const buttonRefill = {
   init() {
     buttonRefill.el = buttonRefill.data();
     buttonRefill.addEvents();
-    capunder.el.appendChild(buttonRefill.el);
+    capunderAction.el.appendChild(buttonRefill.el);
   }
 };

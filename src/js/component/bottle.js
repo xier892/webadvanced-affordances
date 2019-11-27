@@ -12,15 +12,17 @@ const bottle = {
     }
   },
 
-  prepare() {
+  prepare(promise = Promise.resolve()) {
     bottle.setOpenState();
     switch (bottle.state.capacity) {
       case 'empty':
-        capunder.toggleButton('empty');
+        capunder.toggleButton('empty', promise);
         label.toggleInput('enable');
-        setTimeout(() => {
-          label.toggle('show');
-        }, 150);
+        promise.then(() => {
+          setTimeout(() => {
+            label.toggle('show');
+          }, 150);
+        });
         break;
       case 'full':
         capunder.toggleButton('full');

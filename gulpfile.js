@@ -14,6 +14,7 @@ const uglifycss = require('gulp-uglifycss');
 
 gulp.task('js', function() {
   return gulp.src([
+    'src/js/lib/polyfill/*.js',
     'src/js/lib/*.js',
     'src/js/*.js',
     'src/js/component/*.js'])

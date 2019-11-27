@@ -1,8 +1,8 @@
 const capunder = {
-  toggleButton(s = 'full') {
+  toggleButton(s = 'full', promise = Promise.resolve()) {
     switch (s) {
       case 'empty':
-        buttonTake.toggle();
+        buttonTake.toggle(promise);
         break;
       case 'full':
         buttonRefill.toggle();

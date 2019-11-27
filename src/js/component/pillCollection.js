@@ -8,27 +8,34 @@ const pillCollection = {
     return pillCollection.properties.contents.length;
   },
 
+  updatePillCount() {
+    populateStorage('pillCount', Math.max(0, pillCollection.count()));
+  },
+
   take(n) {
-    const { el, properties: { contents } } = pillCollection;
-    const nn = Math.min(contents.length, n);
+    const { el, properties: { contents }, updatePillCount } = pillCollection;
+    const pillsTaken = Math.min(contents.length, n);
+    const transitionPromises = [];
 
     if (!cap.state.open) {
       cap.remove();
     }
 
-    for (let i = 1; i <= nn; i++) {
-      contents[contents.length - i].withdraw();
+    for (let i = 1; i <= pillsTaken; i++) {
+      const p = contents[contents.length - 1];
+      p.withdraw();
+      transitionPromises.push(promiseTransitionEnd(p.el));
+      contents.splice(contents.length - 1, 1);
+      updatePillCount();
     }
 
-    contents.splice(contents.length - nn, nn);
-    populateStorage('pillCount', Math.max(0, retrieveStorage('pillCount') - nn));
-
-    bottle.prepare();
+    bottle.prepare(Promise.all(transitionPromises));
   },
 
   fill(quantity, options = {}) {
-    const { el, properties: { contents } } = pillCollection;
+    const { el, properties: { contents }, updatePillCount } = pillCollection;
     const { drop } = options;
+    const animationPromises = [];
 
     for (let i = 0; i < quantity; i++) {
       const p = new Pill();
@@ -36,14 +43,17 @@ const pillCollection = {
       p.init();
       if (drop) {
         p.drop(50 * i);
+        animationPromises.push(promiseAnimationEnd(p.el));
       } else {
         p.append();
       }
     }
 
-    populateStorage('pillCount', contents.length);
+    updatePillCount();
 
     bottle.prepare();
+
+    return Promise.all(animationPromises);
   },
 
   refill() {
@@ -56,8 +66,10 @@ const pillCollection = {
     }
 
     label.exportInformation();
-    fill(prescription.quantity, { drop: true });
-    cap.close();
+    fill(prescription.quantity, { drop: true }).then(() => {
+      cap.replace();
+      promiseTransitionEnd(cap.el).then(buttonTake.addEvents);
+    });
   },
 
   init() {

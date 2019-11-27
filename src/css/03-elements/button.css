@@ -1,7 +1,7 @@
 button {
-  --min-size: 60px;
-  min-width: var(--min-size);
-  min-height: var(--min-size);
+  --min-button-size: 60px;
+  min-width: var(--min-button-size);
+  min-height: var(--min-button-size);
   border-radius: 10px;
 }
 button:disabled {
@@ -13,6 +13,6 @@ button > img {
 
 @media screen and (max-width: 360px) {
   button {
-    --min-size: 52px;
+    --min-button-size: 52px;
   }
 }

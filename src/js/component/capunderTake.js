@@ -1,15 +1,17 @@
 const buttonTake = {
-  toggle() {
+  toggle(promise = Promise.resolve()) {
     const { el } = buttonTake;
     el.disabled = true;
-    setTimeout(() => {
-      if (document.body.contains(el)) {
-        el.remove();
-        buttonRefill.init();
-      } else {
-        el.removeAttribute('disabled');
-      }
-    }, 300);
+    promise.then(() => {
+      setTimeout(() => {
+        if (document.body.contains(el)) {
+          el.remove();
+          buttonRefill.init();
+        } else {
+          el.removeAttribute('disabled');
+        }
+      }, 300);
+    });
   },
 
   addEvents() {
@@ -40,14 +42,14 @@ const buttonTake = {
 
   init(options = '') {
     buttonTake.el = buttonTake.data();
-    if (options === 'toggle') {
+    if (options === 'disabled') {
       buttonTake.el.disabled = true;
-      setTimeout(buttonTake.addEvents, retrieveStorage('pillCount', prescription.quantity) * 50 + 500);
     } else {
       buttonTake.addEvents();
     }
-    capunder.el.appendChild(buttonTake.el);
+    capunderAction.el.appendChild(buttonTake.el);
   }
 };
 
+capunderAction.init();
 buttonTake.init();

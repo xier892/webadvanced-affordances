@@ -21,8 +21,8 @@
 .cap::after {
   content: '';
   width: 100%;
-  background-color: var(--shadow-color, #dba400);
-  height: var(--shadow-height, 6px);
+  background-color: var(--shadow-color);
+  height: var(--shadow-height);
   position: absolute;
   bottom: 0;
 }
@@ -40,8 +40,8 @@
 }
 .cap-indent {
   background-color: var(--indent-color, #eee);
-  width: var(--indent-width, 5px);
-  height: var(--indent-height, 90%);
+  width: var(--indent-width);
+  height: var(--indent-height);
   pointer-events: none;
 }
 
