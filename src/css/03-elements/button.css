@@ -3,6 +3,7 @@ button {
   min-width: var(--min-button-size);
   min-height: var(--min-button-size);
   border-radius: 10px;
+  user-select: none;
 }
 button:disabled {
   opacity: 0.6;

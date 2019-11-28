@@ -1,5 +1,7 @@
 html {
-  touch-action: manipulation;
-  scroll-behavior: smooth;
   height: 100%;
+  touch-action: manipulation;
+}
+* {
+  touch-action: inherit;
 }
