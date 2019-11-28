@@ -21,9 +21,9 @@ const pillCollection = {
       cap.remove();
     }
 
-    for (let i = 1; i <= pillsTaken; i++) {
+    for (let i = 0; i < pillsTaken; i++) {
       const p = contents[contents.length - 1];
-      p.withdraw();
+      p.withdraw(getRandomInt(0, 25 * i));
       transitionPromises.push(promiseTransitionEnd(p.el));
       contents.splice(contents.length - 1, 1);
       updatePillCount();

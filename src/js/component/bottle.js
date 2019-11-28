@@ -12,32 +12,33 @@ const bottle = {
     }
   },
 
-  prepare(promise = Promise.resolve()) {
+  prepare(oncePillsRemoved = Promise.resolve()) {
     bottle.setOpenState();
     switch (bottle.state.capacity) {
       case 'empty':
-        capunder.toggleButton('empty', promise);
+        buttonTake.toggle(oncePillsRemoved);
         label.toggleInput('enable');
-        promise.then(() => {
+        oncePillsRemoved.then(() => {
           setTimeout(() => {
             label.toggle('show');
           }, 150);
         });
         break;
       case 'full':
-        capunder.toggleButton('full');
+        buttonRefill.toggle();
         break;
       default:
-        capunder.toggleButton('full');
     }
   },
 
   empty() {
     bottle.el.classList.add('flipped');
     pillCollection.take(pillCollection.count()).then(() => {
-      setTimeout(() => {
-        bottle.el.classList.remove('flipped');
-      }, 300);
+      promiseTransitionEnd(bottle.el).then(() => {
+        setTimeout(() => {
+          bottle.el.classList.remove('flipped');
+        }, 300);
+      });
     });
   },
 

@@ -1,5 +1,6 @@
 class Pill {
-  withdraw() {
+  withdraw(delay = 0) {
+    this.el.style.transitionDelay = `${delay}ms`;
     this.el.classList.add('withdrawn');
     this.el.style.setProperty('--z-rotation', getRandomInt(0, 0.5));
   }
