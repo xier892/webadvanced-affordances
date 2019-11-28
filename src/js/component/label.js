@@ -1,12 +1,32 @@
 const label = {
   el: document.getElementById('label'),
+  parent: document.getElementById('label-wrapper'),
 
-  toggle(s) {
-    label.el.parentNode.scrollTo({
-      top: 0,
-      left: (s === 'show') ? label.el.parentNode.offsetWidth : 0,
-      behavior: 'smooth'
-    });
+  state: {},
+
+  toggle(s, delay = 0) {
+    const { el, parent, state } = label;
+    const scrollDistance = parent.scrollLeft;
+
+    el.style.animationDelay = `${delay}ms`;
+
+    if (s === 'show') {
+      state.locked = true;
+      parent.classList.add('locked');
+      el.style.setProperty('--slideIn-end', `${scrollDistance - GLOBAL.WIDTH}px`);
+      el.classList.add('slideIn');
+    } else {
+      delete state.locked;
+      el.style.setProperty('--slideOut-start', `${scrollDistance - GLOBAL.WIDTH}px`);
+      el.style.setProperty('--slideOut-end', `${scrollDistance}px`);
+      el.classList.add('slideOut');
+      promiseAnimationEnd(el).then(() => {
+        el.classList.remove('slideIn', 'slideOut');
+        el.removeAttribute('style');
+        parent.scrollLeft = 0;
+        parent.classList.remove('locked');
+      });
+    }
   },
 
   toggleInput(s) {
@@ -25,5 +45,28 @@ const label = {
     labelDose.select(prescription.dose);
     labelDate.setDate();
     label.toggleInput('disable');
+  },
+
+  addEvents() {
+    window.addEventListener('resize', () => {
+      if (label.state.locked) {
+        window.requestAnimationFrame(() => {
+          label.el.style.setProperty('--slideIn-end', `${label.parent.scrollLeft - GLOBAL.WIDTH}px`);
+        });
+      }
+    });
+    window.addEventListener('orientationchange', () => {
+      if (label.state.locked) {
+        window.requestAnimationFrame(() => {
+          label.el.style.setProperty('--slideIn-end', `${label.parent.scrollLeft - GLOBAL.WIDTH}px`);
+        });
+      }
+    });
+  },
+
+  init() {
+    label.addEvents();
   }
 };
+
+label.init();

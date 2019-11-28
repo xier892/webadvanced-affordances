@@ -1,10 +1,9 @@
-const setMaximumCapacity = () => Math.ceil((window.screen.availWidth / getWidthOfElement('pill transformedWidthTest')) * ((document.body.offsetHeight * 0.8) / getWidthOfElement('pill transformedWidthTest')));
+const GLOBAL = {
+  WIDTH: window.outerWidth,
+  HEIGHT: window.innerHeight
+};
 
-// const setViewportHeight = () => {
-//   const vh = window.innerHeight * 0.01;
-//   document.documentElement.style.setProperty('--vh', `${vh}px`);
-// };
-// setViewportHeight();
+const setMaximumCapacity = () => Math.ceil((GLOBAL.WIDTH / getWidthOfElement('pill transformedWidthTest')) * ((GLOBAL.HEIGHT * 0.8) / getWidthOfElement('pill transformedWidthTest')));
 
 const SETTINGS = {
   PRESCRIPTION_DOSE_MIN: 1,
@@ -18,10 +17,12 @@ window.addEventListener('contextmenu', (event) => {
 });
 
 window.addEventListener('resize', () => {
-  // setViewportHeight();
+  GLOBAL.WIDTH = window.outerWidth;
+  GLOBAL.HEIGHT = window.innerHeight;
   SETTINGS.PRESCRIPTION_QTY_MAX = setMaximumCapacity();
 });
 window.addEventListener('orientationchange', () => {
-  // setViewportHeight();
+  GLOBAL.WIDTH = window.outerWidth;
+  GLOBAL.HEIGHT = window.innerHeight;
   SETTINGS.PRESCRIPTION_QTY_MAX = setMaximumCapacity();
 });

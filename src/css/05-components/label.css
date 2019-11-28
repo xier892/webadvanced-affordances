@@ -4,7 +4,6 @@
   --font-size: 200%;
   --line-height: calc(var(--font-size) + 5px);
   --paragraph-spacing: 10px;
-  --label-translate: 100%;
   --text-color: #555;
   --shadow-height: 2px;
   --shadow-color: var(--color-muted);

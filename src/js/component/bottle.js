@@ -19,9 +19,7 @@ const bottle = {
         buttonTake.toggle(oncePillsRemoved);
         label.toggleInput('enable');
         oncePillsRemoved.then(() => {
-          setTimeout(() => {
-            label.toggle('show');
-          }, 150);
+          label.toggle('show', 150);
         });
         break;
       case 'full':
