@@ -1,5 +1,6 @@
 .pill-collection {
   padding: var(--bottle-padding);
+  padding-bottom: env(--safe-area-inset-bottom);
   display: flex;
   width: 100%;
   justify-content: center;

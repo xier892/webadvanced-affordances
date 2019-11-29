@@ -16,9 +16,15 @@ const buttonTake = {
 
   addEvents() {
     const { el } = buttonTake;
+
     el.removeAttribute('disabled');
+
     el.addEventListener('touchend', (event) => {
       pillCollection.take(prescription.dose);
+    }, false);
+
+    el.addEventListener('contextmenu', (event) => {
+      console.log('right clicked');
     }, false);
   },
 

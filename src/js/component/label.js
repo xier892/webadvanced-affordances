@@ -4,6 +4,10 @@ const label = {
 
   state: {},
 
+  resetTransform() {
+    label.el.style.setProperty('--slideIn-end', `${label.parent.scrollLeft - GLOBAL.WIDTH}px`);
+  },
+
   toggle(s, delay = 0) {
     const { el, parent, state } = label;
     const scrollDistance = parent.scrollLeft;
@@ -15,8 +19,10 @@ const label = {
       parent.classList.add('locked');
       el.style.setProperty('--slideIn-end', `${scrollDistance - GLOBAL.WIDTH}px`);
       el.classList.add('slideIn');
+      window.addEventListener('resize', label.resetTransform);
     } else {
       delete state.locked;
+      window.removeEventListener('resize', label.resetTransform);
       el.style.setProperty('--slideOut-start', `${scrollDistance - GLOBAL.WIDTH}px`);
       el.style.setProperty('--slideOut-end', `${scrollDistance}px`);
       el.classList.add('slideOut');
@@ -45,28 +51,5 @@ const label = {
     labelDose.select(prescription.dose);
     labelDate.setDate();
     label.toggleInput('disable');
-  },
-
-  addEvents() {
-    window.addEventListener('resize', () => {
-      if (label.state.locked) {
-        window.requestAnimationFrame(() => {
-          label.el.style.setProperty('--slideIn-end', `${label.parent.scrollLeft - GLOBAL.WIDTH}px`);
-        });
-      }
-    });
-    window.addEventListener('orientationchange', () => {
-      if (label.state.locked) {
-        window.requestAnimationFrame(() => {
-          label.el.style.setProperty('--slideIn-end', `${label.parent.scrollLeft - GLOBAL.WIDTH}px`);
-        });
-      }
-    });
-  },
-
-  init() {
-    label.addEvents();
   }
 };
-
-label.init();

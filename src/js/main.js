@@ -21,8 +21,3 @@ window.addEventListener('resize', () => {
   GLOBAL.HEIGHT = window.innerHeight;
   SETTINGS.PRESCRIPTION_QTY_MAX = setMaximumCapacity();
 });
-window.addEventListener('orientationchange', () => {
-  GLOBAL.WIDTH = window.outerWidth;
-  GLOBAL.HEIGHT = window.innerHeight;
-  SETTINGS.PRESCRIPTION_QTY_MAX = setMaximumCapacity();
-});

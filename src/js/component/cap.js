@@ -1,16 +1,6 @@
 const cap = {
-  properties: {
-    width: 0,
-    height: 0
-  },
-
-  state: {
-    timer: 0,
-    clientX: 0,
-    clientY: 0,
-    deltaX: 0,
-    deltaY: 0
-  },
+  properties: {},
+  state: {},
 
   setOpenState(s) {
     cap.state.open = (s === 'open');
@@ -71,10 +61,6 @@ const cap = {
       width = el.offsetWidth;
       height = el.offsetHeight;
     });
-    window.addEventListener('orientationchange', () => {
-      width = el.offsetWidth;
-      height = el.offsetHeight;
-    });
 
     el.addEventListener('touchstart', (event) => {
       const { touches } = event;
@@ -107,8 +93,8 @@ const cap = {
         remove();
       }
       reset();
-      deltaX = 0;
-      deltaY = 0;
+      delete state.deltaX;
+      delete state.deltaY;
     }, false);
 
     el.addEventListener('touchcancel', (event) => {
