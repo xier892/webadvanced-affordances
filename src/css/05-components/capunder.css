@@ -43,3 +43,20 @@
     margin: 6.4% 10px;
   }
 }
+
+@supports (margin-top: env(safe-area-inset-top)) {
+  .capunder {
+    margin-top: calc(10% + env(safe-area-inset-top));
+  }
+
+  @media screen and (max-width: 360px) {
+    .capunder {
+      margin-top: calc(8% + env(safe-area-inset-top));
+    }
+  }
+  @media screen and (orientation: landscape) {
+    .capunder {
+      margin-top: calc(6.4% + env(safe-area-inset-top))
+    }
+  }
+}

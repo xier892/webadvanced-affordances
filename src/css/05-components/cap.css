@@ -1,6 +1,6 @@
 .cap {
   --background-color: #fff;
-  --cap-height: calc(20vh + env(safe-area-inset-top));
+  --cap-height: 20vh;
   --indent-color: #eee;
   --indent-width: 5px;
   --indent-height: 90%;
@@ -48,5 +48,17 @@
 @media screen and (orientation: landscape) {
   .cap {
     --cap-height: 20vw;
+  }
+}
+
+@supports (height: env(safe-area-inset-top)) {
+  .cap {
+    --cap-height: calc(20vh + env(safe-area-inset-top));
+  }
+
+  @media screen and (orientation: landscape) {
+    .cap {
+      --cap-height: calc(20vw + env(safe-area-inset-top));
+    }
   }
 }
