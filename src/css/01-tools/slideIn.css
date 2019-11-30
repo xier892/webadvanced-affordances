@@ -1,6 +1,6 @@
 @keyframes slideIn {
   0% {
-    transform: translate3d(0, 0, 0);
+    transform: inherit;
   }
   100% {
     transform: translate3d(var(--slideIn-end), 0, 0);

@@ -1,9 +1,4 @@
-const GLOBAL = {
-  WIDTH: window.outerWidth,
-  HEIGHT: window.innerHeight
-};
-
-const setMaximumCapacity = () => Math.ceil((GLOBAL.WIDTH / getWidthOfElement('pill transformedWidthTest')) * ((GLOBAL.HEIGHT * 0.8) / getWidthOfElement('pill transformedWidthTest')));
+const setMaximumCapacity = () => Math.ceil((window.screen.availWidth / getWidthOfElement('pill transformedWidthTest')) * ((document.documentElement.offsetHeight * 0.8) / getWidthOfElement('pill transformedWidthTest')));
 
 const SETTINGS = {
   PRESCRIPTION_DOSE_MIN: 1,
@@ -17,7 +12,5 @@ window.addEventListener('contextmenu', (event) => {
 });
 
 window.addEventListener('resize', () => {
-  GLOBAL.WIDTH = window.outerWidth;
-  GLOBAL.HEIGHT = window.innerHeight;
   SETTINGS.PRESCRIPTION_QTY_MAX = setMaximumCapacity();
 });
