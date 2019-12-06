@@ -1,9 +1,7 @@
 const buttonClose = {
   addEvents() {
     const { el } = buttonClose;
-    el.addEventListener('touchend', (event) => {
-      cap.replace();
-    }, false);
+    el.addEventListener('touchend', cap.replace, false);
   },
 
   data() {

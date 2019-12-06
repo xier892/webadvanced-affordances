@@ -93,8 +93,8 @@ const cap = {
         remove();
       }
       reset();
-      delete state.deltaX;
-      delete state.deltaY;
+      deltaX = 0;
+      deltaY = 0;
     }, false);
 
     el.addEventListener('touchcancel', (event) => {
