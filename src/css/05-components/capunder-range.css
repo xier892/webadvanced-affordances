@@ -127,8 +127,8 @@
   height: var(--track-height);
 }
 .capunder-range:focus::-ms-fill-lower {
-  background: var(--track-color);
+  background: var(--progress-color);
 }
 .capunder-range:focus::-ms-fill-upper {
-  background: var(--progress-color);
+  background: var(--track-color);
 }

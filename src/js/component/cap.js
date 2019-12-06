@@ -54,8 +54,6 @@ const cap = {
       deltaX,
       deltaY
     } = state;
-    width = el.offsetWidth;
-    height = el.offsetHeight;
 
     window.addEventListener('resize', () => {
       width = el.offsetWidth;
@@ -131,6 +129,9 @@ const cap = {
     }
 
     document.getElementById('top').appendChild(cap.el);
+
+    cap.properties.width = cap.el.offsetWidth;
+    cap.properties.height = cap.el.offsetHeight;
 
     cap.addEvents();
   },

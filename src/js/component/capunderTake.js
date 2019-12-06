@@ -55,7 +55,7 @@ const buttonTake = {
         state.ignoreDefaultAction = true;
         event.target.blur();
         rangeTake.toggle();
-      }, 500);
+      }, 350);
     }, false);
 
     el.addEventListener('touchend', (event) => {

@@ -59,10 +59,15 @@ const rangeTake = {
       slider,
       label,
       state,
+      properties,
       toggle,
       setProgressBar,
       setLabelText
     } = rangeTake;
+
+    window.addEventListener('resize', () => {
+      properties.width = slider.offsetWidth;
+    }, false);
 
     slider.addEventListener('touchmove', () => {
       setProgressBar();
@@ -70,6 +75,8 @@ const rangeTake = {
     }, false);
 
     slider.addEventListener('touchend', () => {
+      setProgressBar();
+      setLabelText();
       if (state.open) {
         buttonTake.ignoreRecommendedDose(slider.value);
       } else {
