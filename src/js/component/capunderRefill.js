@@ -4,6 +4,7 @@ const buttonRefill = {
     if (document.body.contains(el)) {
       el.remove();
       buttonTake.init('disabled');
+      rangeTake.init();
     }
   },
 

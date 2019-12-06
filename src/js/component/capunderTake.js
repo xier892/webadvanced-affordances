@@ -1,10 +1,14 @@
 const buttonTake = {
+  state: {},
+
   toggle(promise = Promise.resolve()) {
     const { el } = buttonTake;
     el.disabled = true;
+    rangeTake.toggle('close');
     promise.then(() => {
       setTimeout(() => {
         if (document.body.contains(el)) {
+          rangeTake.el.remove();
           el.remove();
           buttonRefill.init();
         } else {
@@ -14,17 +18,69 @@ const buttonTake = {
     });
   },
 
+  ignoreRecommendedDose(n) {
+    const {
+      PRESCRIPTION_DOSE_MIN,
+      PRESCRIPTION_DOSE_MAX,
+      PRESCRIPTION_QTY_MIN,
+      PRESCRIPTION_QTY_MAX
+    } = SETTINGS;
+
+    buttonTake.state.ignoreRecommendedDose = true;
+
+    if (n < PRESCRIPTION_DOSE_MIN) {
+      buttonTake.state.newDose = PRESCRIPTION_DOSE_MIN;
+    } else if (n > PRESCRIPTION_QTY_MAX) {
+      buttonTake.state.newDose = PRESCRIPTION_QTY_MAX;
+    } else if (n >= PRESCRIPTION_DOSE_MIN && n <= PRESCRIPTION_DOSE_MAX) {
+      buttonTake.state.newDose = Math.max(Math.round(n), PRESCRIPTION_DOSE_MIN);
+    } else {
+      buttonTake.state.newDose = prescription.dose;
+    }
+  },
+
+  resetToOriginalDose() {
+    delete buttonTake.state.ignoreRecommendedDose;
+    delete buttonTake.state.newDose;
+  },
+
   addEvents() {
-    const { el } = buttonTake;
+    const { el, state, resetToOriginalDose } = buttonTake;
 
     el.removeAttribute('disabled');
 
-    el.addEventListener('touchend', (event) => {
-      pillCollection.take(prescription.dose);
+    el.addEventListener('touchstart', (event) => {
+      delete state.ignoreDefaultAction;
+      state.timer = setTimeout(() => {
+        state.ignoreDefaultAction = true;
+        event.target.blur();
+        rangeTake.toggle();
+      }, 500);
     }, false);
 
-    el.addEventListener('contextmenu', (event) => {
-      console.log('right clicked');
+    el.addEventListener('touchend', (event) => {
+      event.preventDefault();
+
+      clearTimeout(state.timer);
+      delete state.timer;
+
+      if (!state.ignoreDefaultAction) {
+        if (state.ignoreRecommendedDose) {
+          pillCollection.take(state.newDose);
+          resetToOriginalDose();
+        } else {
+          pillCollection.take(prescription.dose);
+        }
+        event.target.focus();
+      }
+
+      delete state.ignoreDefaultAction;
+    }, false);
+
+    el.addEventListener('touchcancel', () => {
+      clearTimeout(state.timer);
+      delete state.timer;
+      delete state.ignoreDefaultAction;
     }, false);
   },
 
@@ -59,3 +115,4 @@ const buttonTake = {
 
 capunderAction.init();
 buttonTake.init();
+rangeTake.init();

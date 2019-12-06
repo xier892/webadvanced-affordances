@@ -10,6 +10,7 @@ button:disabled {
 }
 button > img {
   vertical-align: middle;
+  pointer-events: none;
 }
 
 @media screen and (max-width: 360px) {

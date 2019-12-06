@@ -1,0 +1,30 @@
+.capunder button {
+  height: var(--min-button-size);
+}
+.capunder-close, .capunder-action {
+  margin: 0 10px;
+}
+.capunder-close {
+  background-color: var(--color-normal);
+  color: #fff;
+}
+.capunder-action {
+  display: flex;
+  width: 100%;
+  flex-flow: column;
+  align-items: center;
+}
+.capunder-take, .capunder-refill {
+  --button-width: 100%;
+  width: var(--button-width);
+  font-size: var(--font-size);
+  font-weight: bold;
+}
+.capunder-take {
+  background-color: #fff;
+  color: var(--color-normal);
+}
+.capunder-refill {
+  background-color: var(--color-normal);
+  color: #fff;
+}
