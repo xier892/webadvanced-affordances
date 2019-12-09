@@ -1,0 +1,28 @@
+.checkForTouchCapability {
+  display: none;
+}
+
+/* smartphones, touchscreens */
+@media (hover: none) and (pointer: coarse) {
+  .checkForTouchCapability {
+    display: none;
+  }
+}
+/* stylus-based screens */
+@media (hover: none) and (pointer: fine) {
+  .checkForTouchCapability {
+    display: none;
+  }
+}
+/* Nintendo Wii controller, Microsoft Kinect */
+@media (hover: hover) and (pointer: coarse) {
+  .checkForTouchCapability {
+    display: unset;
+  }
+}
+/* mouse, touch pad */
+@media (hover: hover) and (pointer: fine) {
+  .checkForTouchCapability {
+    display: unset;
+  }
+}
