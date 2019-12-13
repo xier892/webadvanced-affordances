@@ -50,6 +50,7 @@ const buttonTake = {
     el.removeAttribute('disabled');
 
     el.addEventListener('touchstart', (event) => {
+      event.preventDefault();
       delete state.ignoreDefaultAction;
       state.timer = setTimeout(() => {
         state.ignoreDefaultAction = true;

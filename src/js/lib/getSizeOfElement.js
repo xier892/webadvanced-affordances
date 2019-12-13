@@ -6,16 +6,16 @@ const getSizeOfElement = (element, dimension) => {
   el.style.visibility = 'hidden';
   el.style.position = 'absolute';
   document.body.appendChild(el);
+  const bounding = el.getBoundingClientRect();
 
   switch (dimension) {
     case 'width':
-      result = el.getBoundingClientRect().width;
+      result = bounding.right - bounding.left;
       break;
     case 'height':
-      result = el.getBoundingClientRect().height;
+      result = bounding.bottom - bounding.top;
       break;
     default:
-      result = el.getBoundingClientRect().width;
   }
 
   el.remove();

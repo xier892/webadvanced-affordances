@@ -1,6 +1,9 @@
 .capunder {
   display: flex;
   justify-content: center;
+  position: absolute;
+  left: 0;
+  right: 0;
   margin: 10% 10px 6.4% 10px;
 }
 

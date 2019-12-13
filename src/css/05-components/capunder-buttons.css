@@ -13,6 +13,7 @@
   width: 100%;
   flex-flow: column;
   align-items: center;
+  position: relative;
 }
 .capunder-take, .capunder-refill {
   --button-width: 100%;
