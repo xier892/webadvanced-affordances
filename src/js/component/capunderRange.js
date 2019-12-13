@@ -84,7 +84,7 @@ const rangeTake = {
       }
     }, false);
 
-    el.addEventListener('blur', () => {
+    el.addEventListener('focusout', () => {
       toggle('close');
     }, false);
   },
