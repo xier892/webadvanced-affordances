@@ -32,9 +32,6 @@
 .cap.pressed {
   transform: scale3d(1, 1.4, 1) translate3d(0, 14%, 0);
 }
-.cap.dragging {
-  transform: rotate3d(0, 0, 1, var(--cap-rotate)) scale3d(1, 1.4, 1) translate3d(0, var(--cap-translate), 0);
-}
 .cap.dragged {
   transform: rotate3d(0, 0, 1, 45deg) translate3d(0, -100%, 0);
 }

@@ -12,14 +12,14 @@ const cap = {
     cap.el.classList.add('pressed');
   },
 
-  move() {
+  move(rotate, translate) {
     cap.state.action = 'dragging';
-    cap.el.classList.add('dragging');
+    cap.el.style.transform = `rotate3d(0, 0, 1, ${rotate}) scale3d(1, 1.4, 1) translate3d(0, ${translate}, 0)`;
   },
 
   reset() {
     delete cap.state.action;
-    cap.el.classList.remove('pressed', 'dragging');
+    cap.el.classList.remove('pressed');
     cap.el.removeAttribute('style');
   },
 
@@ -74,12 +74,12 @@ const cap = {
         clearTimeout(timer);
       }
       if (state.action === 'depressed' || state.action === 'dragging') {
-        move();
         deltaX = touches[0].clientX - clientX;
         deltaY = touches[0].clientY - clientY;
         const delta = Math.max((-deltaY) / width, deltaX / width);
-        target.style.setProperty('--cap-rotate', `${(delta > 0) ? Math.max(0, delta * 80) : 0}deg`);
-        target.style.setProperty('--cap-translate', `${(deltaY < 0) ? Math.max(-40, deltaY / 4) : 0}%`);
+        const rotate = `${(delta > 0) ? Math.max(0, delta * 80) : 0}deg`;
+        const translate = `${(deltaY < 0) ? Math.max(-40, deltaY / 4) : 0}%`;
+        move(rotate, translate);
       }
     }, false);
 

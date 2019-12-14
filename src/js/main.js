@@ -1,4 +1,4 @@
-const setMaximumCapacity = () => Math.ceil((window.screen.availWidth / getWidthOfElement('pill transformedWidthTest')) * ((document.documentElement.offsetHeight * 0.8) / getHeightOfElement('pill transformedWidthTest')));
+const setMaximumCapacity = () => Math.ceil((window.screen.availWidth / getWidthOfElement('pill transformTest')) * ((document.documentElement.offsetHeight * 0.8) / getHeightOfElement('pill transformTest')));
 
 const SETTINGS = {
   PRESCRIPTION_DOSE_MIN: 1,

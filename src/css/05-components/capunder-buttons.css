@@ -8,13 +8,6 @@
   background-color: var(--color-normal);
   color: #fff;
 }
-.capunder-action {
-  display: flex;
-  width: 100%;
-  flex-flow: column;
-  align-items: center;
-  position: relative;
-}
 .capunder-take, .capunder-refill {
   --button-width: 100%;
   width: var(--button-width);

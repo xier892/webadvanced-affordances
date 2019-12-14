@@ -1,10 +1,13 @@
 .capunder {
   display: flex;
   justify-content: center;
-  position: absolute;
-  left: 0;
-  right: 0;
   margin: 10% 10px 6.4% 10px;
+}
+.capunder-action {
+  display: flex;
+  width: 100%;
+  flex-flow: column;
+  align-items: center;
 }
 
 @media screen and (max-width: 360px) {
